@@ -1,0 +1,46 @@
+apply plugin: "war"
+apply plugin: "java"
+apply plugin: "idea"
+apply plugin: "maven"
+
+group = "org.springframework.data"
+version = "$sdRestVersion"
+
+configurations.all {
+  exclude group: "commons-logging"
+  exclude module: "slf4j-log4j12"
+  exclude module: "servlet-api"
+}
+
+repositories {
+  mavenCentral(artifactUrls: [
+      "http://repo.springframework.org/release",
+      "http://repo.springframework.org/milestone"
+  ])
+  mavenLocal()
+}
+
+dependencies {
+
+  // JPA
+  compile "org.hibernate.javax.persistence:hibernate-jpa-2.0-api:1.0.1.Final"
+  runtime "org.hibernate:hibernate-entitymanager:$hibernateVersion"
+  runtime "org.hsqldb:hsqldb:1.8.0.10"
+
+  // Spring Data
+  compile "org.springframework.data:spring-data-commons-core:$sdCommonsVersion"
+  compile "org.springframework.data:spring-data-jpa:$sdJpaVersion"
+
+  // Spring Data REST
+  runtime "org.springframework.data:spring-data-rest-webmvc:$sdRestVersion"
+
+}
+
+task wrapper(type: Wrapper) { gradleVersion = "1.0-milestone-9" }
+
+idea {
+  project.ipr.withXml { provider ->
+    provider.node.component.find { it.@name == 'VcsDirectoryMappings' }.mapping.@vcs = 'Git'
+  }
+  module.jdkName = "1.6"
+}
