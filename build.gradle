@@ -5,6 +5,7 @@ apply plugin: "maven"
 
 group = "org.springframework.data"
 version = "$sdRestVersion"
+archivesBaseName = "spring-data-rest-webmvc"
 
 configurations.all {
   exclude group: "commons-logging"
