@@ -1,5 +1,5 @@
 #!/bin/sh
-BASEURI="http://localhost:8080/repositories"
+BASEURI="http://localhost:8080"
 
 curl -d '{"name" : "John Doe"}' -H "Content-Type: application/json" $BASEURI/person
 curl -d '{"name" : "Jane Doe"}' -H "Content-Type: application/json" $BASEURI/person

@@ -38,7 +38,7 @@ dependencies {
 
 }
 
-task wrapper(type: Wrapper) { gradleVersion = "1.0-milestone-9" }
+task wrapper(type: Wrapper) { gradleVersion = "1.0-rc-1" }
 
 idea {
   project.ipr.withXml { provider ->
