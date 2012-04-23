@@ -8,6 +8,9 @@ group = "org.springframework.data"
 version = "$sdRestVersion"
 archivesBaseName = "spring-data-rest-webmvc"
 
+//project.sourceCompatibility = 1.6
+project.targetCompatibility = 1.6
+
 configurations.all {
   exclude group: "commons-logging"
   exclude module: "slf4j-log4j12"
@@ -23,6 +26,11 @@ repositories {
 
 dependencies {
 
+  // Logging
+  compile "org.slf4j:slf4j-api:$slf4jVersion"
+  runtime "org.slf4j:jcl-over-slf4j:$slf4jVersion"
+  runtime "ch.qos.logback:logback-classic:$logbackVersion"
+
   // JPA
   compile "org.hibernate.javax.persistence:hibernate-jpa-2.0-api:1.0.1.Final"
   runtime "org.hibernate:hibernate-entitymanager:$hibernateVersion"
@@ -30,10 +38,14 @@ dependencies {
 
   // Spring Data
   compile "org.springframework.data:spring-data-commons-core:$sdCommonsVersion"
-  compile "org.springframework.data:spring-data-jpa:$sdJpaVersion"
+  compile("org.springframework.data:spring-data-jpa:$sdJpaVersion") { dep ->
+    exclude group: "org.slf4j"
+  }
 
   // Spring Data REST
-  compile "org.springframework.data:spring-data-rest-webmvc:$sdRestVersion"
+  compile("org.springframework.data:spring-data-rest-webmvc:$sdRestVersion") { dep ->
+    exclude group: "org.slf4j"
+  }
 
 }
 
