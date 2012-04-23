@@ -34,15 +34,21 @@ dependencies {
   compile "org.springframework.data:spring-data-jpa:$sdJpaVersion"
 
   // Spring Data REST
-  runtime "org.springframework.data:spring-data-rest-webmvc:$sdRestVersion"
+  compile "org.springframework.data:spring-data-rest-webmvc:$sdRestVersion"
 
 }
 
 task wrapper(type: Wrapper) { gradleVersion = "1.0-rc-1" }
 
 idea {
-  project.ipr.withXml { provider ->
-    provider.node.component.find { it.@name == 'VcsDirectoryMappings' }.mapping.@vcs = 'Git'
+  project {
+    jdkName = "1.6"
+    languageLevel = "1.6"
+    ipr {
+      withXml { xml ->
+        xml.node.component.find { it.@name == "VcsDirectoryMappings" }.mapping.@vcs = "Git"
+        xml.node.component.find { it.@name == "ProjectRootManager" }.output.@url = "file://\$PROJECT_DIR\$/build"
+      }
+    }
   }
-  module.jdkName = "1.6"
 }
