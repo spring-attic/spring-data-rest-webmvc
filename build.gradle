@@ -1,5 +1,6 @@
-apply plugin: "war"
 apply plugin: "java"
+apply plugin: "war"
+apply plugin: "jetty"
 apply plugin: "idea"
 apply plugin: "maven"
 
@@ -14,11 +15,9 @@ configurations.all {
 }
 
 repositories {
-  mavenCentral(artifactUrls: [
-      "http://repo.springframework.org/snapshot",
-      "http://repo.springframework.org/milestone",
-      "http://repo.springframework.org/release"
-  ])
+  maven { url "http://repo.springframework.org/milestone" }
+  maven { url "http://repo.springframework.org/release" }
+  mavenCentral()
   mavenLocal()
 }
 
