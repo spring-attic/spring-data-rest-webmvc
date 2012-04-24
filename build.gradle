@@ -8,7 +8,9 @@ group = "org.springframework.data"
 version = "$sdRestVersion"
 archivesBaseName = "spring-data-rest-webmvc"
 
-//project.sourceCompatibility = 1.6
+jettyRun.contextPath = "data"
+
+project.sourceCompatibility = 1.6
 project.targetCompatibility = 1.6
 
 configurations.all {
