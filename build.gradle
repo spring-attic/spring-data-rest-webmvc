@@ -20,10 +20,9 @@ configurations.all {
 }
 
 repositories {
-  maven { url "http://repo.springframework.org/milestone" }
-  maven { url "http://repo.springframework.org/release" }
-  mavenCentral()
-  mavenLocal()
+  maven { url "http://repo.springsource.org/libs-snapshot" }
+  maven { url "http://repo.springsource.org/libs-milestone" }
+  maven { url "http://repo.springsource.org/libs-release" }
 }
 
 dependencies {
@@ -36,18 +35,14 @@ dependencies {
   // JPA
   compile "org.hibernate.javax.persistence:hibernate-jpa-2.0-api:1.0.1.Final"
   runtime "org.hibernate:hibernate-entitymanager:$hibernateVersion"
-  runtime "org.hsqldb:hsqldb:1.8.0.10"
+  runtime "org.hsqldb:hsqldb:2.2.8"
 
   // Spring Data
   compile "org.springframework.data:spring-data-commons-core:$sdCommonsVersion"
-  compile("org.springframework.data:spring-data-jpa:$sdJpaVersion") { dep ->
-    exclude group: "org.slf4j"
-  }
+  compile "org.springframework.data:spring-data-jpa:$sdJpaVersion"
 
   // Spring Data REST
-  compile("org.springframework.data:spring-data-rest-webmvc:$sdRestVersion") { dep ->
-    exclude group: "org.slf4j"
-  }
+  compile "org.springframework.data:spring-data-rest-webmvc:$sdRestVersion"
 
 }
 
