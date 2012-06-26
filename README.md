@@ -13,3 +13,7 @@ The easiest way to get going with the REST exporter is to simply run the embedde
 This will expose a server at `http://localhost:8080/data/`. Issue curl requests to find out what services are available.
 
 Alternatively, you can build a WAR file using `./gradlew war`, and deploy that into your servlet container.
+
+### Loading dummy data for testing
+
+If you want to play with some Person entities, there is a Ruby script in the root of the project named `load_name_data.rb`. It will load some random names from the `names.txt` file and create `Person` entities from them. You can then test the paging and sorting functionality by adding the appropriate URL parameters (information is in the wiki: [spring-data-rest/wiki/Paging-and-Sorting](https://github.com/SpringSource/spring-data-rest/wiki/Paging-and-Sorting)).
