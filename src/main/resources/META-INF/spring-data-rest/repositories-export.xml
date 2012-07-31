@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:p="http://www.springframework.org/schema/p"
        xmlns:jpa="http://www.springframework.org/schema/data/jpa"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
@@ -20,6 +21,8 @@
       - afterDelete
       - beforeLinkSave
       - afterLinkSave
+      - beforeLinkDelete
+      - afterLinkDelete
 
     What you put after that doesn't matter, you just need to make the bean name unique, of course.
   -->
@@ -42,5 +45,19 @@
     </property>
   </bean>
   -->
+
+  <!--
+    To configure the URL parameters used for paging (as well as the default page size),
+    define an instance of the RepositoryRestConfiguration class.
+
+    You can also configure the JSONP and JSONPE parameter names here.
+   -->
+  <!--
+  <bean class="org.springframework.data.rest.webmvc.RepositoryRestConfiguration"
+        p:defaultPageSize="10"
+        p:limitParamName="count"
+        p:jsonpParamName="callback"
+        p:jsonpOnErrParamName="errback"/>
+   -->
 
 </beans>
