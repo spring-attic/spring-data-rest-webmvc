@@ -20,7 +20,7 @@ configurations.all {
 }
 
 repositories {
-  //maven { url "http://repo.springsource.org/libs-snapshot" }
+  maven { url "http://repo.springsource.org/libs-snapshot" }
   maven { url "http://repo.springsource.org/libs-milestone" }
   maven { url "http://repo.springsource.org/libs-release" }
 }
@@ -56,7 +56,7 @@ dependencies {
 
 }
 
-task wrapper(type: Wrapper) { gradleVersion = "1.0" }
+task wrapper(type: Wrapper) { gradleVersion = "1.1" }
 
 idea {
   project {

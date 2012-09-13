@@ -1,14 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-       xmlns:p="http://www.springframework.org/schema/p"
-       xmlns:jpa="http://www.springframework.org/schema/data/jpa"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
-       http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa.xsd">
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-  <import resource="shared.xml"/>
+  <!--
+    If you need to add Converters to the REST exporter to handle the property types you're using
+    in your entities, then just configure a ConversionServiceFactoryBean here, add the Converters
+    you need, and they will, in turn, be added to the FormattingConversionService the REST exporter
+    uses internally.
 
-  <jpa:repositories base-package="org.springframework.data.rest.example"/>
+    Uncomment this block to add the included UUID <-> String converters, which are not included by default.
+  -->
+  <!--
+  <bean class="org.springframework.context.support.ConversionServiceFactoryBean">
+    <property name="converters">
+      <set>
+        <bean class="org.springframework.data.rest.core.convert.StringToUUIDConverter"/>
+        <bean class="org.springframework.data.rest.core.convert.UUIDToStringConverter"/>
+      </set>
+    </property>
+  </bean>
+  -->
 
   <!--
     This validator will be picked up automatically. The default configuration is to look at the bean name
@@ -45,19 +57,5 @@
     </property>
   </bean>
   -->
-
-  <!--
-    To configure the URL parameters used for paging (as well as the default page size),
-    define an instance of the RepositoryRestConfiguration class.
-
-    You can also configure the JSONP and JSONPE parameter names here.
-   -->
-  <!--
-  <bean class="org.springframework.data.rest.webmvc.RepositoryRestConfiguration"
-        p:defaultPageSize="10"
-        p:limitParamName="count"
-        p:jsonpParamName="callback"
-        p:jsonpOnErrParamName="errback"/>
-   -->
 
 </beans>
