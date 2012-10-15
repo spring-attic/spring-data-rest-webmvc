@@ -4,5 +4,5 @@ require "net/http"
 client = Net::HTTP.new("localhost", 8080)
 
 File.open("names.txt").each_line do |name|
-  client.post("/data/people", JSON.dump({"name" => name.chomp}), {"Content-Type"=>"application/json"})
+  client.post("/spring-data-rest-webmvc/people", JSON.dump({"name" => name.chomp}), {"Content-Type"=>"application/json"})
 end

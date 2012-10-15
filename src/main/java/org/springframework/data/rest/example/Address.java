@@ -1,5 +1,7 @@
 package org.springframework.data.rest.example;
 
+import java.util.List;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -10,16 +12,16 @@ import javax.persistence.Id;
 @Entity
 public class Address {
 
-  @Id @GeneratedValue private Long id;
-  private String[] lines;
-  private String city;
-  private String province;
-  private String postalCode;
+  @Id @GeneratedValue private Long         id;
+  @ElementCollection private  List<String> lines;
+  private                     String       city;
+  private                     String       province;
+  private                     String       postalCode;
 
   public Address() {
   }
 
-  public Address(String[] lines, String city, String province, String postalCode) {
+  public Address(List<String> lines, String city, String province, String postalCode) {
     this.lines = lines;
     this.city = city;
     this.province = province;
@@ -30,11 +32,11 @@ public class Address {
     return id;
   }
 
-  public String[] getLines() {
+  public List<String> getLines() {
     return lines;
   }
 
-  public void setLines(String[] lines) {
+  public void setLines(List<String> lines) {
     this.lines = lines;
   }
 
@@ -60,6 +62,16 @@ public class Address {
 
   public void setPostalCode(String postalCode) {
     this.postalCode = postalCode;
+  }
+
+  @Override public String toString() {
+    return "Address{" +
+        "id=" + id +
+        ", lines=" + lines +
+        ", city='" + city + '\'' +
+        ", province='" + province + '\'' +
+        ", postalCode='" + postalCode + '\'' +
+        '}';
   }
 
 }

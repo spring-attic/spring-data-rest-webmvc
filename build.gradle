@@ -1,14 +1,12 @@
 apply plugin: "java"
 apply plugin: "war"
-apply plugin: "jetty"
+apply plugin: "tomcat"
 apply plugin: "idea"
 apply plugin: "maven"
 
 group = "org.springframework.data"
 version = "$sdRestVersion"
 archivesBaseName = "spring-data-rest-webmvc"
-
-jettyRun.contextPath = "data"
 
 project.sourceCompatibility = 1.6
 project.targetCompatibility = 1.6
@@ -17,6 +15,19 @@ configurations.all {
   exclude group: "commons-logging"
   exclude module: "slf4j-log4j12"
   exclude module: "servlet-api"
+}
+
+buildscript {
+  repositories {
+    add(new org.apache.ivy.plugins.resolver.URLResolver()) {
+      name = 'GitHub'
+      addArtifactPattern 'http://cloud.github.com/downloads/[organisation]/[module]/[module]-[revision].[ext]'
+    }
+  }
+
+  dependencies {
+    classpath 'bmuschko:gradle-tomcat-plugin:0.9.5'
+  }
 }
 
 repositories {
@@ -46,6 +57,9 @@ dependencies {
   compile("org.springframework:spring-expression:$springVersion") { force = true }
   compile("org.springframework:spring-orm:$springVersion") { force = true }
   compile("org.springframework:spring-tx:$springVersion") { force = true }
+  compile("org.springframework:spring-web:$springVersion") { force = true }
+  compile("org.springframework:spring-webmvc:$springVersion") { force = true }
+  compile "javax.inject:javax.inject:1"
 
   // Spring Data
   compile "org.springframework.data:spring-data-commons-core:$sdCommonsVersion"
@@ -54,6 +68,14 @@ dependencies {
   // Spring Data REST
   compile "org.springframework.data:spring-data-rest-webmvc:$sdRestVersion"
 
+  // Servlet 3.0
+  providedCompile "javax.servlet:javax.servlet-api:3.0.1"
+
+  tomcat "org.apache.tomcat.embed:tomcat-embed-core:${tomcatVersion}",
+         "org.apache.tomcat.embed:tomcat-embed-logging-juli:${tomcatVersion}"
+  tomcat("org.apache.tomcat.embed:tomcat-embed-jasper:${tomcatVersion}") {
+    exclude group: 'org.eclipse.jdt.core.compiler', module: 'ecj'
+  }
 }
 
 task wrapper(type: Wrapper) { gradleVersion = "1.1" }
