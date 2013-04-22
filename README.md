@@ -19,7 +19,9 @@ Alternatively, you can build a WAR file using `./gradlew war` or `mvn package`, 
 ### Run With maven
 
 	mvn tomcat7:run
+
 or
+
 	mvn jetty:run
 
 ### Loading dummy data for testing
@@ -29,8 +31,10 @@ If you want to play with some Person entities, there is a Ruby script in the roo
 Or you can just use one of the following if curl is in your path:
 
 To load data under Unix Bash (Make sure curl is in your path):
+
 	$ cat names.txt | while read name; do curl -H "Content-Type: application/json" -X POST -d "{ \"name\": \"$name\" }" http://localhost:8080/spring-data-rest-webmvc/people; done
 
 To load data under Windows Batch (Make sure curl is in your path):
+
 	> FOR /F "tokens=*" %i IN (names.txt) DO curl -H "Content-Type: application/json" -X POST -d "{ \"name\": \"%i\" }" http://localhost:8080/spring-data-rest-webmvc/people
 
