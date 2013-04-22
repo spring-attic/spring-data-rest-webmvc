@@ -2,7 +2,7 @@
 
 This deployable web application is an example project that illustrates how to deploy your own artifacts into a WAR that uses the [Spring Data REST Exporter](https://github.com/SpringSource/spring-data-rest).
 
-### Use
+## Use
 
 Either use this project as a template for your own project, or simply include your own artifacts as dependencies in `build.gradle` or `pom.xml`.
 
@@ -24,17 +24,17 @@ or
 
 	mvn jetty:run
 
-### Loading dummy data for testing
+## Loading dummy data for testing
 
 If you want to play with some Person entities, you can load some random names from the `names.txt` file and create `Person` entities from them. You can then test the paging and sorting functionality by adding the appropriate URL parameters (information is in the wiki: [spring-data-rest/wiki/Paging-and-Sorting](https://github.com/SpringSource/spring-data-rest/wiki/Paging-and-Sorting)).
 
-#### Unix
+### Unix
 
 To load data with Curl and Bash (Make sure curl is in your path):
 
 	cat names.txt | while read name; do curl -H "Content-Type: application/json" -X POST -d "{ \"name\": \"$name\" }" http://localhost:8080/spring-data-rest-webmvc/people; done
 
-#### Windows
+### Windows
 
 To load data with Curl and Batch (Make sure curl is in your path):
 
