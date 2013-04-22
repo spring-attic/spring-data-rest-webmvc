@@ -38,5 +38,5 @@ To load data with Curl and Bash (Make sure curl is in your path):
 
 To load data with Curl and Batch (Make sure curl is in your path):
 
-	> FOR /F "tokens=*" %i IN (names.txt) DO curl -H "Content-Type: application/json" -X POST -d "{ \"name\": \"%i\" }" http://localhost:8080/spring-data-rest-webmvc/people
+	FOR /F "tokens=*" %i IN (names.txt) DO curl -H "Content-Type: application/json" -X POST -d "{ \"name\": \"%i\" }" http://localhost:8080/spring-data-rest-webmvc/people
 
