@@ -6,7 +6,7 @@ This deployable web application is an example project that illustrates how to de
 
 Either use this project as a template for your own project, or simply include your own artifacts as dependencies in `build.gradle` or `pom.xml`.
 
-The easiest way to get going with the REST exporter is to simply run the embedded Tomcat servlet container. See the followin sections to learn how to run this with either gradle or maven.
+The easiest way to get going with the REST exporter is to simply run the embedded Tomcat servlet container. See the following sections to learn how to run this with either gradle or maven.
 
 This will expose a server at `http://localhost:8080/spring-data-rest-webmvc/`. Issue curl requests to find out what services are available.
 
@@ -26,15 +26,17 @@ or
 
 ### Loading dummy data for testing
 
-If you want to play with some Person entities, there is a Ruby script in the root of the project named `load_name_data.rb`. It will load some random names from the `names.txt` file and create `Person` entities from them. You can then test the paging and sorting functionality by adding the appropriate URL parameters (information is in the wiki: [spring-data-rest/wiki/Paging-and-Sorting](https://github.com/SpringSource/spring-data-rest/wiki/Paging-and-Sorting)).
+If you want to play with some Person entities, you can load some random names from the `names.txt` file and create `Person` entities from them. You can then test the paging and sorting functionality by adding the appropriate URL parameters (information is in the wiki: [spring-data-rest/wiki/Paging-and-Sorting](https://github.com/SpringSource/spring-data-rest/wiki/Paging-and-Sorting)).
 
-Or you can just use one of the following if curl is in your path:
+#### Unix
 
-To load data under Unix Bash (Make sure curl is in your path):
+To load data with Curl and Bash (Make sure curl is in your path):
 
-	$ cat names.txt | while read name; do curl -H "Content-Type: application/json" -X POST -d "{ \"name\": \"$name\" }" http://localhost:8080/spring-data-rest-webmvc/people; done
+	cat names.txt | while read name; do curl -H "Content-Type: application/json" -X POST -d "{ \"name\": \"$name\" }" http://localhost:8080/spring-data-rest-webmvc/people; done
 
-To load data under Windows Batch (Make sure curl is in your path):
+#### Windows
+
+To load data with Curl and Batch (Make sure curl is in your path):
 
 	> FOR /F "tokens=*" %i IN (names.txt) DO curl -H "Content-Type: application/json" -X POST -d "{ \"name\": \"%i\" }" http://localhost:8080/spring-data-rest-webmvc/people
 
