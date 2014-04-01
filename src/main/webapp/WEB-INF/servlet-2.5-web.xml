@@ -19,7 +19,7 @@
 
   <servlet>
     <servlet-name>rest-exporter</servlet-name>
-    <servlet-class>org.springframework.data.rest.webmvc.RepositoryRestExporterServlet</servlet-class>
+    <servlet-class>org.springframework.data.rest.webmvc.RepositoryRestDispatcherServlet</servlet-class>
     <load-on-startup>1</load-on-startup>
   </servlet>
 

@@ -4,7 +4,7 @@ import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRegistration;
 
-import org.springframework.data.rest.webmvc.RepositoryRestExporterServlet;
+import org.springframework.data.rest.webmvc.RepositoryRestDispatcherServlet;
 import org.springframework.web.WebApplicationInitializer;
 import org.springframework.web.context.ContextLoaderListener;
 import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
@@ -21,7 +21,7 @@ public class RestExporterWebInitializer implements WebApplicationInitializer {
 
     ctx.addListener(new ContextLoaderListener(rootCtx));
 
-    RepositoryRestExporterServlet exporter = new RepositoryRestExporterServlet();
+    RepositoryRestDispatcherServlet exporter = new RepositoryRestDispatcherServlet();
 
     ServletRegistration.Dynamic reg = ctx.addServlet("rest-exporter", exporter);
     reg.setLoadOnStartup(1);
