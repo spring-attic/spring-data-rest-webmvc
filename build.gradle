@@ -21,7 +21,7 @@ buildscript {
   repositories {
     add(new org.apache.ivy.plugins.resolver.URLResolver()) {
       name = 'GitHub'
-      addArtifactPattern 'http://cloud.github.com/downloads/[organisation]/[module]/[module]-[revision].[ext]'
+      addArtifactPattern 'https://cloud.github.com/downloads/[organisation]/[module]/[module]-[revision].[ext]'
     }
   }
 
@@ -31,9 +31,9 @@ buildscript {
 }
 
 repositories {
-  maven { url "http://repo.springsource.org/libs-snapshot" }
-  maven { url "http://repo.springsource.org/libs-milestone" }
-  maven { url "http://repo.springsource.org/libs-release" }
+  maven { url "https://repo.springsource.org/libs-snapshot" }
+  maven { url "https://repo.springsource.org/libs-milestone" }
+  maven { url "https://repo.springsource.org/libs-release" }
 }
 
 dependencies {
