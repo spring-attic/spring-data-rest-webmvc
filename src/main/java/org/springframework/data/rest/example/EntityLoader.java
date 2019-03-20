@@ -36,7 +36,7 @@ public class EntityLoader {
     ));
     LOG.info("  **** Saved Address: " + addr);
 
-    Profile twitter = profiles.save(new Profile("twitter", "http://twitter.com/john_doe"));
+    Profile twitter = profiles.save(new Profile("twitter", "https://twitter.com/john_doe"));
     LOG.info("  **** Saved Profile: " + twitter);
 
     Map<String, Profile> profs = new HashMap<String, Profile>();
