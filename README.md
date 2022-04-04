@@ -1,3 +1,5 @@
+# spring-data-rest-webmvc is no longer actively maintained by VMware, Inc.
+
 # Spring Data REST Exporter Example
 
 This deployable web application is an example project that illustrates how to deploy your own artifacts into a WAR that uses the [Spring Data REST Exporter](https://github.com/SpringSource/spring-data-rest).
