@@ -50,7 +50,6 @@ dependencies {
 
   // Spring
   compile("org.springframework:spring-aop:$springVersion") { force = true }
-  compile("org.springframework:spring-asm:$springVersion") { force = true }
   compile("org.springframework:spring-beans:$springVersion") { force = true }
   compile("org.springframework:spring-context:$springVersion") { force = true }
   compile("org.springframework:spring-core:$springVersion") { force = true }
@@ -62,7 +61,7 @@ dependencies {
   compile "javax.inject:javax.inject:1"
 
   // Spring Data
-  compile "org.springframework.data:spring-data-commons-core:$sdCommonsVersion"
+  compile "org.springframework.data:spring-data-commons:$sdCommonsVersion"
   compile "org.springframework.data:spring-data-jpa:$sdJpaVersion"
 
   // Spring Data REST
